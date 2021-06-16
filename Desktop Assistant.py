@@ -5,7 +5,7 @@ import wikipedia
 import webbrowser
 import os
 import smtplib
-
+import pywhatkit as pt # for send message on whatsapp
 
 engine = pyttsx3.init('sapi5')
 voices = engine.getProperty('voices')
@@ -106,6 +106,15 @@ if __name__ == '__main__':
             except Exception as e:
                 print(e)
                 speak("sorry sir, I am not able to send this email at the moment")
+         elif 'send message on whatsapp' in query:
+            try:
+                speak('What should I Say?')
+                content = takeCommand()
+                pt.sendwhatmsg('+919304550791',content,14,40)
+                speak('Message has been sent!')
+            except Exception as e:
+                print(e)
+                speak('Sorry sir, I am not able to send this message at the moment! ,Please try again')
         elif 'quit' in query:
             exit()            
 
